@@ -18,7 +18,6 @@ export class DashboardChildComponent implements OnInit {
 
   }
 
-
  ngOnInit():void{
     console.log("se inicializo el dashboard child");
     
