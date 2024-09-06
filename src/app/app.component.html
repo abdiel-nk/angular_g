@@ -40,7 +40,7 @@
     <ng-container *ngSwitchCase="'tres'" [ngTemplateOutlet]="numeroTresTemplate">
     </ng-container>
 </ng-container>
-
+<!-- se uso template ya que no se renderica y se ahorra espacio en memoria, por ende mayor eficencias-->
 <ng-template #numeroTresTemplate>
     <ul>
         <ng-container 
