@@ -2,5 +2,68 @@
 <router-outlet></router-outlet>
 <app-dashboard></app-dashboard> -->
 <router-outlet></router-outlet>
-<!-- Directivas de atributos -->
- <div [ngStyle]="{color: condition ? 'blue' :'red'}">Hola</div>
+<!-- Directivas de atributos / siempre usan Ñ[estos corchetes] -->
+ <div [ngStyle]="{color: condition ? 'blue' :'red'}">NgStyle</div>
+
+ <div [ngClass]="condition ? 'green':'red'">
+    NgClass
+ </div>
+
+<!-- Directivas Estructurales -->
+<div *ngIf="condition">
+    Me renderice
+</div>
+
+<!-- ngFor -->
+<div *ngFor="let item of array">{{item.name}} </div>
+
+<ul>
+    <ng-container 
+    *ngFor="let item of array; 
+    let i = index; 
+    trackBy: trackByFn;
+    let even = even
+    ">
+        <li *ngIf=" i <= array.length-1">{{item.name + i}}</li>
+
+    </ng-container> 
+</ul>
+<p>
+    <b>condition: {{condition}}</b>
+</p>
+<!-- ng-switch -->
+<ng-container [ngSwitch]="selectedOption">
+    <p *ngSwitchCase="'uno'">me renderice con un switch 1
+    </p>
+    <h1 *ngSwitchCase="'dos'">me renderice con un switch 2
+    </h1>
+    <ng-container *ngSwitchCase="'tres'" [ngTemplateOutlet]="numeroTresTemplate">
+    </ng-container>
+</ng-container>
+
+<ng-template #numeroTresTemplate>
+    <ul>
+        <ng-container 
+        *ngFor="let item of array; 
+        let i = index; 
+        trackBy: trackByFn;
+        let even = even
+        ">
+            <li *ngIf=" i <= array.length-1">{{item.name + i}}</li>
+    
+        </ng-container> 
+    </ul>
+</ng-template>
+
+
+<!-- template -->
+<ng-container> Dom </ng-container>
+<ng-template #template> Esto es un template </ng-template>
+
+<!-- how ng ngIf works by Angular -->
+
+<ng-template [ngIf]="condition">
+    <div>Me renderice</div>
+</ng-template>
+
+<!-- how ngFor works by Angular -->
